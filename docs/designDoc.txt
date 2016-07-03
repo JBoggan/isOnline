@@ -1,0 +1,25 @@
+Design Doc
+
+Initial 7/2/16
+Status: DRAFT
+
+Overview: 
+
+The final intent of this app is to be an online REPL for InwardSinging, a language that doesn't exist yet except in my fevered imagination. That project is currently in the middle of grammar design and tweaking and the first Ruby-based implementation should be ready in 2016Q4. Part of the idea behind IS is to have a very powerful, terse language for prototyping, in particular from a mobile environment where screenspace and development tools are limited. I want a bored programmer to be able to hash out a demo program on an iPhone without scrolling in 9 minutes between BART stops. 
+
+The first phase of this is getting an online IDE/REPL set up with a distinctive style appropriate for mobile devices. There are already several examples of this for Ruby online (https://repl.it/languages/ruby for example). We just want to make a competent copy at first. By the time we've done that (no small feat in itself) the first version of InwardSinging should be ready for testing.
+
+Architecture:
+
+Ruby 2.3.1
+Rails 5.0.0
+Angular JS 1.5.7
+rspec for backend testing
+Jasmine for frontend testing
+SQLite3 -> Postgres for database
+Heroku for deployment
+
+Specific implementation:
+
+Start with a one-page app with no user authentication or state. There will be a box to enter text, a run button, and a box that returns the executed code or error messages. There will be one API endpoint in the Rails app that accepts a string of Ruby code to be executed and return the result. Obviously there will have to be heavy sanitization there since we don't want arbitrary code execution on a server we control. AngularJS functions will handle the reading, API call, and updating of the onscreen elements.
+
